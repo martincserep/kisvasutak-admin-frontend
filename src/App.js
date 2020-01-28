@@ -1,14 +1,25 @@
 import React from 'react';
 
-import './App.css';
+import Routes from "./utils/routes";
+
+import Store from "./store/store";
+import {Provider} from "react-redux";
+
+
+
 
 function App() {
+
   return (
-    <div className="App">
-      <header className="App-header">
-        Kisvasutak Admin page
-      </header>
-    </div>
+
+    <Provider store={Store}>
+      <div className="App">
+        <main>
+          <Routes />
+        </main>
+    
+      </div>
+    </Provider>
   );
 }
 

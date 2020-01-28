@@ -1,5 +1,6 @@
 # Kisvasutak
 This is the client side repository for _kisvasutak_ project. 
+[Open in your browser](https://kisvasutak-admin.herokuapp.com/)
 
 ## Components
 
