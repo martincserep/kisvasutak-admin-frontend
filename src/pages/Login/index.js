@@ -3,7 +3,8 @@ import React , {useState} from "react";
 import { useDispatch } from "react-redux";
 import { loginUser } from "../../backend/login";
 import {Redirect} from "react-router-dom";
-import { Button } from "carbon-components-react";
+
+import styles from "./Login.module.scss";
 
 const Signin = () => {
 
@@ -38,19 +39,19 @@ const Signin = () => {
 
 
     return(
-      
-        <React.Fragment>
-            <form onSubmit={login}>
-            <p>Kisvasutak Admin</p>
-                <label htmlFor="email">Email: </label>
-                <input type="email" name="email" onChange={(e) => setEmail(e.target.value)} />
-                <label htmlFor="password">Password: </label>
-                <input name="password" type="password" onChange={(e) => setPassword(e.target.value)} />
-                <Button type="submit">Login</Button>
-            </form>
-          
-        </React.Fragment>
-       
+        <>
+        <div className={styles.backdrop} />
+            <div className={styles.login}>
+                <div className={styles.formContainer}>
+                    <form onSubmit={login}>
+                        <span className={styles.title}>Kisvasutak Admin</span>
+                            <input className={styles.input} type="email" name="email" onChange={(e) => setEmail(e.target.value)} />
+                            <input className={styles.input} name="password" type="password" onChange={(e) => setPassword(e.target.value)} />
+                        <button className={styles.button} type="submit">Login</button>
+                    </form>
+                </div>  
+            </div>
+            </>
     )
 
 }
