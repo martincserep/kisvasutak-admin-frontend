@@ -3,10 +3,8 @@ import React , {useState} from "react";
 import { useDispatch } from "react-redux";
 import { loginUser } from "../../backend/login";
 import {Redirect} from "react-router-dom";
-import { Container, Row, Col } from "react-grid-system";
 
 import styles from "./Login.module.scss";
-import { Button, TextInput, Label } from "evergreen-ui";
 
 const Signin = () => {
 
