@@ -45,8 +45,8 @@ const Signin = () => {
                 <div className={styles.formContainer}>
                     <form onSubmit={login}>
                         <span className={styles.title}>Kisvasutak Admin</span>
-                            <input className={styles.input} type="email" name="email" onChange={(e) => setEmail(e.target.value)} />
-                            <input className={styles.input} name="password" type="password" onChange={(e) => setPassword(e.target.value)} />
+                            <input placeholder="Email" className={styles.input} type="email" name="email" onChange={(e) => setEmail(e.target.value)} />
+                            <input placeholder="Password" className={styles.input} name="password" type="password" onChange={(e) => setPassword(e.target.value)} />
                         <button className={styles.button} type="submit">Login</button>
                     </form>
                 </div>  
