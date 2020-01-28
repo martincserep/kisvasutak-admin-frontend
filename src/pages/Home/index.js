@@ -1,8 +1,7 @@
 import React from 'react';
 import { Container } from "react-grid-system";
 
-
-import { Button, Heading } from "evergreen-ui";
+import TopHeader from '../../components/Header';
 
 /**
 * @author martincserep
@@ -12,9 +11,8 @@ import { Button, Heading } from "evergreen-ui";
 const Home = () => {
     return(
         <Container>
-            <Heading>
+            <TopHeader />
                 Home
-            </Heading>
         </Container>
     );
 }

@@ -1,0 +1,13 @@
+@import '../../styles/mixins/heading';
+
+.headerContainer {
+    width: 100%;
+    padding: 40px;
+    display: flex;
+    align-items: center;
+    .menu {
+        list-style-type: none;
+        display: inline-flex;
+        margin-left: 50px;
+    }
+}
