@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Kisvasutak Admin",
+  "name": "Admin page for the Kisvasutak App",
   "icons": [
     {
       "src": "favicon.ico",
