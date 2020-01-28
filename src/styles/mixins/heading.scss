@@ -1,14 +1,9 @@
 @import '../variables';
-@import '../fonts';
 
-@mixin heading($font-size, $color: #fff, $gothic:false) {
+@mixin heading($font-size, $color: #fff) {
     font-size: $font-size;
     color: $color;
     letter-spacing: 2px;
     margin: 0;
-    @if $gothic {
-        font-family: 'Roboto';
-    } @else {
-        font-family: 'Roboto';
-    }
+    font-family: 'Roboto';
 }
