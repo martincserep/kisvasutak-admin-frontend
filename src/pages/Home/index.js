@@ -4,6 +4,7 @@ import { Container } from "react-grid-system";
 import sytles from "./Home.module.scss";
 
 import TopHeader from '../../components/Header';
+import Card from '../../components/common/Card';
 
 /**
 * @author martincserep
@@ -13,10 +14,18 @@ import TopHeader from '../../components/Header';
 const Home = () => {
     return(
         <>
-            <div className={sytles.bgHider} />
             <TopHeader />
             <Container>
-                    Home
+                <div className={sytles.homeContainer}>
+                    <Card />
+                    <Card />
+                    <Card />
+                    <Card />
+                    <Card />
+                    <Card />
+                    <Card />
+                    <Card />
+                </div>
             </Container>
         </>
     );
