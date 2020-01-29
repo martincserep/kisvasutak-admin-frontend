@@ -1,6 +1,8 @@
 import React from 'react';
 import { Container } from "react-grid-system";
 
+import sytles from "./Home.module.scss";
+
 import TopHeader from '../../components/Header';
 
 /**
@@ -10,10 +12,13 @@ import TopHeader from '../../components/Header';
 
 const Home = () => {
     return(
-        <Container>
+        <>
+            <div className={sytles.bgHider} />
             <TopHeader />
-                Home
-        </Container>
+            <Container>
+                    Home
+            </Container>
+        </>
     );
 }
 

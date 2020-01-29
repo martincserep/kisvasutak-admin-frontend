@@ -1,13 +1,28 @@
 @import '../../styles/mixins/heading';
 
-.headerContainer {
-    width: 100%;
-    padding: 40px;
-    display: flex;
-    align-items: center;
-    .menu {
-        list-style-type: none;
-        display: inline-flex;
-        margin-left: 50px;
-    }
-}
+nav {
+    overflow: hidden;
+    background-color: #333333;
+    a {
+        float: left;
+        display: block;
+        color: #f2f2f2;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        font-size: 17px;
+        }
+      
+        a:hover {
+        background-color: #ddd;
+        color: black;
+        }
+      
+       a.active {
+        background-color: #4CAF50;
+        color: white;
+        }
+      .icon {
+        display: none;
+      }
+  }

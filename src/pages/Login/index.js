@@ -6,6 +6,8 @@ import {Redirect} from "react-router-dom";
 
 import styles from "./Login.module.scss";
 
+import bgimage from '../../assets/images/bgimage.jpg'
+
 const Signin = () => {
 
     const [email, setEmail] = useState("");
@@ -40,18 +42,18 @@ const Signin = () => {
 
     return(
         <>
-        <div className={styles.backdrop} />
-            <div className={styles.login}>
-                <div className={styles.formContainer}>
-                    <form onSubmit={login}>
-                        <span className={styles.title}>Kisvasutak Admin</span>
-                            <input placeholder="Email" className={styles.input} type="email" name="email" onChange={(e) => setEmail(e.target.value)} />
-                            <input placeholder="Password" className={styles.input} name="password" type="password" onChange={(e) => setPassword(e.target.value)} />
-                        <button className={styles.button} type="submit">Login</button>
-                    </form>
-                </div>  
-            </div>
-            </>
+            <div className={styles.backdrop} />
+                <div className={styles.login}>
+                    <div className={styles.formContainer}>
+                        <form onSubmit={login}>
+                            <span className={styles.title}>Kisvasutak Admin</span>
+                                <input placeholder="Email" className={styles.input} type="email" name="email" onChange={(e) => setEmail(e.target.value)} />
+                                <input placeholder="Password" className={styles.input} name="password" type="password" onChange={(e) => setPassword(e.target.value)} />
+                            <button className={styles.button} type="submit">Login</button>
+                        </form>
+                    </div>  
+                </div>
+        </>
     )
 
 }
