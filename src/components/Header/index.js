@@ -3,10 +3,13 @@ import { Link, withRouter } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { logoutUser } from "../../backend/logout";
 
+import { menu } from '../../utils/menu'
+
+import { IoIosLogOut } from "react-icons/io";
+
 import firebase from "../../config/firebase";
 
 import styles from './Header.module.scss'
-
 
 const Nav = (props) => {
   
@@ -34,14 +37,23 @@ const Nav = (props) => {
 
   let buttons = (  
           <React.Fragment>
-              <li><button className="logout" onClick={logout}>LogOut</button></li>
+              
           </React.Fragment>)
 
 
     return(
-        <div className={styles.headerContainer}>
-            {buttons}
-      </div>
+      <nav>
+        <>
+        {
+						menu.getAllMenuItems().map(currMenuItem => (
+							<a href={currMenuItem.target}>
+								{currMenuItem.label}
+							</a>
+						))
+					}
+        </>
+        <a onClick={logout}>Logout</a>
+      </nav>
     )
 
 }

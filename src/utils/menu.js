@@ -1,6 +1,6 @@
-export const fakeMenu = {
+export const menu = {
 	menuItems: [
 		{ id: 1, label: 'Home', target: '/' }
 	],
-	getAllMenuItems: () => fakeMenu.menuItems,
+	getAllMenuItems: () => menu.menuItems,
 }
