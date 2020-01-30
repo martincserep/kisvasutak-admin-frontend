@@ -1,11 +1,9 @@
 import React, {useEffect, useState} from "react";
-import { Link, withRouter } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
+import { withRouter } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import { logoutUser } from "../../backend/logout";
 
 import { menu } from '../../utils/menu'
-
-import { IoIosLogOut } from "react-icons/io";
 
 import firebase from "../../config/firebase";
 
@@ -46,7 +44,7 @@ const Nav = (props) => {
         <>
         {
 						menu.getAllMenuItems().map(currMenuItem => (
-							<a href={currMenuItem.target}>
+							<a key={currMenuItem.id} href={currMenuItem.target}>
 								{currMenuItem.label}
 							</a>
 						))

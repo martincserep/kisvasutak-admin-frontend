@@ -42,6 +42,7 @@ const Signin = () => {
 
     return(
         <>
+            <div className={styles.background} />
             <div className={styles.backdrop} />
                 <div className={styles.login}>
                     <div className={styles.formContainer}>
