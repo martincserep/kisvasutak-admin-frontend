@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Container } from "react-grid-system";
 
-import sytles from "./Home.module.scss";
+import sytles from "./Accomodations.module.scss";
 
 import TopHeader from '../../components/Header';
 import Card from '../../components/common/Card';
@@ -10,10 +10,10 @@ import Card from '../../components/common/Card';
 import RotateLoader from "react-spinners/RotateLoader";
 /**
 * @author martincserep
-* @function Home
+* @function Accomodations
 * */
 
-class Home extends Component {
+class Accomodations extends Component {
 
     constructor(props) {
         super(props)
@@ -24,7 +24,7 @@ class Home extends Component {
     }
 
     componentDidMount() {
-        fetch('https://kisvasutak-admin.herokuapp.com/trains.php')
+        fetch('https://kisvasutak-admin.herokuapp.com/accomodations.php')
             .then(res => res.json())
             .then(json => {
                 this.setState({
@@ -78,4 +78,4 @@ render() {
     }
 }
 }
-export default Home;
+export default Accomodations;
