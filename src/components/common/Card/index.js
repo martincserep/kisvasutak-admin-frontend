@@ -15,7 +15,7 @@ const Card = ( props ) => {
           </div>
           <div className={styles.infoContainer}>
             <span className={styles.title}>{title}</span>
-            <span className={styles.icon}><FaEdit /></span>
+            <a href="trainedit" Link className={styles.icon}><FaEdit /></a>
           </div>
       </div>  
     );
