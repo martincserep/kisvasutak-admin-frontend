@@ -4,8 +4,7 @@ import styles from './TrainEdit.module.scss';
 
 import { Container } from "react-grid-system";
 
-const TrainEdit = () => {
-
+const TrainEdit = (props) => {
     const lineName = "Lillafüredi Állami Erdei Vasút";
     const image = "http://laev.hu/images/allando_cikk/dscn6192.jpg";
     const pricing = "http://www.eszakerdo.hu/magyar/erdvinfo/menetdij-tablazat_laev_180502-.pdf";
