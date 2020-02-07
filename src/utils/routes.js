@@ -14,8 +14,8 @@ const Routes = () => (
    <BrowserRouter>
         <Switch>
             <Route exact path="/" component={Auth(Home)} />
-            <Route exact path="/accomodations" component={Auth(Accomodations)} />
-            <Route exact path="/sights" component={Auth(Sights)} />
+            <Route exact path="/accomodations/:trainId" component={Auth(Accomodations)} />
+            <Route exact path="/sights/:trainId" component={Auth(Sights)} />
             <Route exact path="/trainedit" component={Auth(TrainEdit)} />
             <Route exact path="/login" component={Login} />
         </Switch>

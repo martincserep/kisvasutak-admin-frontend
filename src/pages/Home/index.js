@@ -24,7 +24,7 @@ class Home extends Component {
     }
 
     componentDidMount() {
-        fetch('https://kisvasutak-admin.herokuapp.com/trains.php')
+        fetch('http://localhost:4000/trains/1OVBAM9ZNlZI45yCYZRckOgXJRj1')
             .then(res => res.json())
             .then(json => {
                 this.setState({
@@ -39,6 +39,7 @@ render() {
     var rawData = this.state.items;
     var isLoaded = this.state.isLoaded;
     var items = [];
+    var trainId = '';
         
     if (!isLoaded) {
         return(
@@ -69,7 +70,8 @@ render() {
                             // <Card title={item.name} image={item.imgUrl} />
                         ))} */}
                         {items.map(item=> (
-                            <Card key={item.key} title={item.value.name} image={item.value.imgUrl} />
+                            trainId = item.key.substr(1),
+                            <Card key={item.key} title={item.value.name} image={item.value.imgUrl} isTrain={true} accomHref={'/accomodations/'+trainId} sightsHref={'/sights/'+trainId} />
                         ))};
                     </div>
                 </Container>
