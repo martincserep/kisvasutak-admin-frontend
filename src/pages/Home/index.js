@@ -24,6 +24,7 @@ class Home extends Component {
     }
 
     componentDidMount() {
+        
         fetch('http://localhost:4000/trains/1OVBAM9ZNlZI45yCYZRckOgXJRj1')
             .then(res => res.json())
             .then(json => {
