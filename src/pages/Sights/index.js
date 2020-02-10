@@ -18,7 +18,7 @@ class Sights extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            apiUrl: 'http://localhost:4000/sights/' + this.props.match.params.trainId,
+            apiUrl: 'https://kisvasutak-admin.herokuapp.com/sights/' + this.props.match.params.trainId,
             items: [],
             isLoaded: false,
         }

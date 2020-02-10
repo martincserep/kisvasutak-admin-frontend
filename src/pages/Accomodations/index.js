@@ -18,7 +18,7 @@ class Accomodations extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            apiUrl: 'http://localhost:4000/accomodations/' + this.props.match.params.trainId,
+            apiUrl: 'https://kisvasutak-admin.herokuapp.com/accomodations/' + this.props.match.params.trainId,
             items: [],
             isLoaded: false,
         }

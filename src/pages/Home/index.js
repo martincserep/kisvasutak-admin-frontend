@@ -25,7 +25,7 @@ class Home extends Component {
 
     componentDidMount() {
         
-        fetch('http://localhost:4000/trains/1OVBAM9ZNlZI45yCYZRckOgXJRj1')
+        fetch('https://kisvasutak-admin.herokuapp.com/trains/1OVBAM9ZNlZI45yCYZRckOgXJRj1')
             .then(res => res.json())
             .then(json => {
                 this.setState({
@@ -56,24 +56,17 @@ render() {
             </>
         );
     } else {
-        Object.keys(rawData).map(item=> {
-            items.push({"key": item, "value": rawData[item]});
+        let trains = Object.keys(rawData).map(item => {
+            let current = {"key": item, "value": rawData[item]}
+            return <Card key={current.value.key} title={current.value.value.name} image={current.value.value.imgUrl} isTrain={true} accomHref={'/accomodations/'+current.value.key.substr(1)} sightsHref={'/sights/'+current.value.key.substr(1)} />
         })
 
-        
         return(
             <>
                 <TopHeader />
                 <Container>
                     <div className={sytles.homeContainer}>
-                        {/* {Object.keys(items).forEach(item=> (
-                            <span>items[item].name</span>
-                            // <Card title={item.name} image={item.imgUrl} />
-                        ))} */}
-                        {items.map(item=> (
-                            trainId = item.key.substr(1),
-                            <Card key={item.key} title={item.value.name} image={item.value.imgUrl} isTrain={true} accomHref={'/accomodations/'+trainId} sightsHref={'/sights/'+trainId} />
-                        ))};
+                        {trains}
                     </div>
                 </Container>
             </>
