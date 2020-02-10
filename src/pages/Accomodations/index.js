@@ -18,13 +18,14 @@ class Accomodations extends Component {
     constructor(props) {
         super(props)
         this.state = {
+            apiUrl: 'https://kisvasutak-admin.herokuapp.com/accomodations/' + this.props.match.params.trainId,
             items: [],
             isLoaded: false,
         }
     }
 
     componentDidMount() {
-        fetch('https://kisvasutak-admin.herokuapp.com/accomodations.php')
+        fetch(this.state.apiUrl)
             .then(res => res.json())
             .then(json => {
                 this.setState({
@@ -54,9 +55,16 @@ render() {
             </>
         );
     } else {
-        Object.keys(rawData).map(item=> {
-            items.push({"key": item, "value": rawData[item]});
-        })
+        rawData.forEach(element => {
+            if(element[0]){
+
+            } else {
+
+                Object.keys(element).map(item=> {
+                    items.push({"key": item, "value": element[item]});
+                })
+            }
+        });
 
         
         return(
@@ -69,7 +77,7 @@ render() {
                             // <Card title={item.name} image={item.imgUrl} />
                         ))} */}
                         {items.map(item=> (
-                            <Card key={item.key} title={item.value.name} image={item.value.imgUrl} />
+                            <Card key={item.key} title={item.value.name} isTrain={false} image={item.value.imgUrl} />
                         ))};
                     </div>
                 </Container>

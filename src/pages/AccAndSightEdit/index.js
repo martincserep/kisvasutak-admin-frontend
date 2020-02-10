@@ -1,10 +1,10 @@
 import React , {useState} from "react";
 import TopHeader from '../../components/Header';
-import styles from './TrainEdit.module.scss';
+import styles from './AccAndSightEdit.module.scss';
 
 import { Container } from "react-grid-system";
 
-const TrainEdit = (props) => {
+const AccAndSightEdit = (props) => {
     const lineName = "Lillafüredi Állami Erdei Vasút";
     const image = "http://laev.hu/images/allando_cikk/dscn6192.jpg";
     const pricing = "http://www.eszakerdo.hu/magyar/erdvinfo/menetdij-tablazat_laev_180502-.pdf";
@@ -39,4 +39,4 @@ const TrainEdit = (props) => {
 
 }
 
-export default TrainEdit;
+export default AccAndSightEdit;
