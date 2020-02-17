@@ -1,6 +1,4 @@
 @import '../../styles/variables.scss';
-    .container {
-        margin: 25px;
         .formContainer {
             max-width: 500px;
             border-radius: 10px;
@@ -23,6 +21,15 @@
                 width: 70%;
                 border-radius: 10px;
             }
+            .label {
+                color: $main-white;
+                display: block;
+                margin: 5px;
+                padding: 5px;
+                font-size: 20px;
+                width: 100%;
+                border-radius: 10px; 
+            }
             .textboxinput {
                 margin: 20px;
                 padding: 10px;
@@ -33,11 +40,12 @@
                 resize: vertical;
             }
             .title {
+                display: flexbox;
                 color: $main-white;
+                width: 100%;
                 margin: 20px;
                 padding: 20px;
                 font-size: 40px;
             }
             
         }
-    }

@@ -1,42 +1,97 @@
-import React , {useState} from "react";
-import TopHeader from '../../components/Header';
-import styles from './TrainEdit.module.scss';
-
+import React, { Component } from 'react';
 import { Container } from "react-grid-system";
 
-const TrainEdit = (props) => {
-    const lineName = "Lillafüredi Állami Erdei Vasút";
-    const image = "http://laev.hu/images/allando_cikk/dscn6192.jpg";
-    const pricing = "http://www.eszakerdo.hu/magyar/erdvinfo/menetdij-tablazat_laev_180502-.pdf";
-    const schedule = "http://www.eszakerdo.hu/erdeivasut/menetrend/191216-200408_mnr_LAEV_2020_tel1.pdf";
-    const desc = "A Lillafüredi ÁEV Magyarország egyik legszebb vonalvezetésű kisvasútja, valódi hegyipálya, vonala meredek hegyoldalakban, különleges völgyhidakon, alagutakon vezet keresztül. Városi környezetből indulva, a diósgyőri vár közeléből juthatunk el vonataival számos látványosághoz: a Garadna völgyben a Hámori-tó partján kanyarogva a lillafüredi Palotaszállóhoz, vízeséshez, barlangokhoz, az újmassai őskohóhoz, és számos gyalogos túra kiindulópontjára. Forrás: kisvasut.hu";
-    const events = "http://www.eszakerdo.hu/magyar/erdeivasut/2019/esemenynaptar/esemenynaptar_laev_paev_2019.pdf";
-    const additional = "http://www.eszakerdo.hu/magyar/erdeivasut/2019/laev_vadaszkurt_expressz/vadaszkurt-ex_190928_plakat.pdf";
-    const actualEvents = "http://www.eszakerdo.hu/magyar/menu/erdvinfo_uj.htm"
-    return(
-        <>
-            <TopHeader />
-            <Container>
-                <div className={styles.container}>
-                    <div className={styles.formContainer}>
-                        <form>
-                            <span className={styles.title}>{lineName}</span>
-                                <input placeholder="Name" className={styles.input} value={lineName} type="text" name="name" />
-                                <input placeholder="Image" className={styles.input} value={image} type="url" name="image" />
-                                <input placeholder="Pricing" className={styles.input} value={pricing} type="url" name="pricing" />
-                                <input placeholder="Schedule" className={styles.input} value={schedule} type="url" name="schedule" />
-                                <textarea placeholder="Description" className={styles.textboxinput} value={desc} name="description"  />
-                                <input placeholder="Events" className={styles.input} value={events} type="url" name="events" />
-                                <input placeholder="Actual Events" className={styles.input} value={actualEvents} type="url" name="actualEvents" />
-                                <input placeholder="Additional" className={styles.input} value={additional} type="url" name="additional" />
-                            <button className={styles.button} type="submit">Save</button>
-                        </form>
-                    </div>  
+import styles from "./TrainEdit.module.scss";
+
+import TopHeader from '../../components/Header';
+
+
+import RotateLoader from "react-spinners/RotateLoader";
+/**
+* @author martincserep
+* @function Accomodations
+* */
+
+class Accomodations extends Component {
+
+    constructor(props) {
+        super(props)
+        this.state = {
+            apiUrl: 'http://localhost:8080/gettrain/' + this.props.match.params.trainId,
+            items: [],
+            isLoaded: false,
+        }
+    }
+
+    componentDidMount() {
+        fetch(this.state.apiUrl)
+            .then(res => res.json())
+            .then(json => {
+                this.setState({
+                    items: json,
+                    isLoaded: true,
+                })
+            });
+    }
+
+render() {
+    
+    var rawData = this.state.items;
+    var isLoaded = this.state.isLoaded;
+    var items = [];
+        
+    if (!isLoaded) {
+        return(
+            <>
+                <div className={styles.middle}>
+                    <RotateLoader
+                        size={50}
+                        margin={30}
+                        />
                 </div>
-            </Container>
-        </>
-    )
+                <TopHeader />
 
+            </>
+        );
+    } else {
+        rawData.forEach(element => {
+            if(element[0]){
+
+            } else {
+                items = element;
+                // })
+            }
+        });
+
+        console.log(items)        
+        return(
+            <>
+                <TopHeader />
+                <Container>
+                    <div className={styles.formContainer}>
+                        <span className={styles.title}>{items.name}</span>
+                        <label className={styles.label}>Name</label>
+                            <input placeholder="Name" className={styles.input} value={items.name} type="text" name="name" />
+                        <label className={styles.label}>Image</label>
+                            <input placeholder="Image" className={styles.input} value={items.imgUrl} type="url" name="image" />
+                        <label className={styles.label}>Pricing</label>
+                            <input placeholder="Pricing" className={styles.input} value={items.pricingUrl} type="url" name="pricing" />
+                        <label className={styles.label}>Schedule</label>
+                            <input placeholder="Schedule" className={styles.input} value={items.scheduleUrl} type="url" name="schedule" />
+                        <label className={styles.label}>Description</label>
+                            <textarea placeholder="Description" className={styles.textboxinput} value={items.description} name="description"  />
+                        <label className={styles.label}>Events</label>
+                            <input placeholder="Events" className={styles.input} value={items.eventsUrl} type="url" name="events" />
+                        <label className={styles.label}>Actual Events</label>
+                            <input placeholder="Actual Events" className={styles.input} value={items.actualEventsUrl} type="url" name="actualEvents" />
+                        <label className={styles.label}>Additional</label>
+                            <input placeholder="Additional" className={styles.input} value={items.additionalUrl} type="url" name="additional" />
+                        <button className={styles.button} type="submit">Save</button>
+                    </div>
+                </Container>
+            </>
+        );
+    }
 }
-
-export default TrainEdit;
+}
+export default Accomodations;

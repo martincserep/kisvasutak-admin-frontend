@@ -58,7 +58,7 @@ render() {
     } else {
         let trains = Object.keys(rawData).map(item => {
             let current = {"key": item, "value": rawData[item]}
-            return <Card key={current.value.key} title={current.value.value.name} image={current.value.value.imgUrl} isTrain={true} accomHref={'/accomodations/'+current.value.key.substr(1)} sightsHref={'/sights/'+current.value.key.substr(1)} />
+            return <Card key={current.value.key} title={current.value.value.name} image={current.value.value.imgUrl} isTrain={true} editHref={'/gettrain/'+current.value.key.substr(1)} accomHref={'/accomodations/'+current.value.key.substr(1)} sightsHref={'/sights/'+current.value.key.substr(1)} />
         })
 
         return(
