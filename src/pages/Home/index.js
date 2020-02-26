@@ -8,6 +8,9 @@ import Card from '../../components/common/Card';
 
 
 import RotateLoader from "react-spinners/RotateLoader";
+
+import * as firebase from 'firebase';
+
 /**
 * @author martincserep
 * @function Home
@@ -24,18 +27,26 @@ class Home extends Component {
     }
 
     componentDidMount() {
-        
-        fetch('https://kisvasutak-admin.herokuapp.com/trains/1OVBAM9ZNlZI45yCYZRckOgXJRj1')
-            .then(res => res.json())
-            .then(json => {
-                this.setState({
-                    items: json,
-                    isLoaded: true,
-                })
-            });
+        firebase.auth().onAuthStateChanged((user) => {
+            if (user) {
+                this.setState({ userId: user.uid });
+                let apiUrl = 'https://kisvasutak-admin.herokuapp.com/trains/' + user.uid
+                fetch(apiUrl)
+                    .then(res => res.json())
+                    .then(json => {
+                        this.setState({
+                            items: json,
+                            isLoaded: true,
+                        })
+                    });
+			} else {
+             console.log('You are not logged in.')   
+			}
+			
+        });
     }
+    render() {
 
-render() {
     
     var rawData = this.state.items;
     var isLoaded = this.state.isLoaded;

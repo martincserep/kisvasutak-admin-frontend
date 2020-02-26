@@ -6,7 +6,7 @@ import {Redirect} from "react-router-dom";
 
 import styles from "./Login.module.scss";
 
-import bgimage from '../../assets/images/bgimage.jpg'
+import bgimage from '../../assets/images/bgimage.jpg';
 
 const Signin = () => {
 
@@ -38,7 +38,6 @@ const Signin = () => {
     if(redirect){
         return <Redirect to="/" />  
     }
-
 
     return(
         <>

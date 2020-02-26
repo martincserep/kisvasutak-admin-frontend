@@ -59,7 +59,6 @@ render() {
 
             } else {
                 items = element;
-                // })
             }
         });
 
