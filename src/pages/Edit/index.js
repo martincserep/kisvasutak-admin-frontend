@@ -8,8 +8,9 @@ import TopHeader from '../../components/Header';
 
 import RotateLoader from "react-spinners/RotateLoader";
 import TableItem from '../../components/common/TableItem';
-import { Table, TableHead, TableBody, TableHeaderCell, TableRow, TableCell } from 'evergreen-ui';
+import { Table, TableHead, TableBody, TableHeaderCell, TableRow, TableCell, Heading, Button } from 'evergreen-ui';
 import Header from '../../components/Header';
+import { FaEdit } from 'react-icons/fa';
 /**
 * @author martincserep
 * @function EditPage
@@ -42,7 +43,6 @@ render() {
     var rawData = this.state.items;
     var isLoaded = this.state.isLoaded;
     var items = [];
-        
     if (!isLoaded) {
         return(
             <>
@@ -64,16 +64,6 @@ render() {
                 items = element;
             }
         });
-    
-        let stops = items.stations.forEach(item => {
-                return(
-                    <TableRow>
-                        <TableCell>{item.name}</TableCell>
-                        <TableCell>{item.location.lat}</TableCell>
-                        <TableCell>{item.location.lng}</TableCell>
-                    </TableRow>
-                )
-        })
 
         return(
             <>
@@ -99,11 +89,13 @@ render() {
                             <input placeholder="Additional" className={styles.input} value={items.additionalUrl} type="url" name="additional" />
                         <button className={styles.button} type="submit">Save</button>
                     </div>
+                    <Heading size={900}>Stations</Heading>
                     <Table>
                         <TableHead>
                             <TableHeaderCell>Name</TableHeaderCell>
                             <TableHeaderCell>Lattitude</TableHeaderCell>
                             <TableHeaderCell>Longitude</TableHeaderCell>
+                            <TableHeaderCell><FaEdit /></TableHeaderCell>
                         </TableHead>
                         <TableBody>
                              {items.stations.map(item => {
@@ -112,9 +104,17 @@ render() {
                                         <TableCell>{item.name}</TableCell>
                                         <TableCell>{item.location.lat}</TableCell>
                                         <TableCell>{item.location.lng}</TableCell>
+                                        <TableCell> </TableCell>
+
                                     </TableRow>
                                 )
                             })}
+                        <TableRow>
+                            <TableCell><input placeholder='name' /></TableCell>
+                            <TableCell><input placeholder='lat' /></TableCell>
+                            <TableCell><input placeholder='long' /></TableCell>
+                            <TableCell><Button>Add</Button></TableCell>
+                        </TableRow>
                         </TableBody>
                     </Table>
                 </Container>
