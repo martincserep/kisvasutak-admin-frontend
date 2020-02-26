@@ -7,17 +7,20 @@ import TopHeader from '../../components/Header';
 
 
 import RotateLoader from "react-spinners/RotateLoader";
+import TableItem from '../../components/common/TableItem';
+import { Table, TableHead, TableBody, TableHeaderCell, TableRow, TableCell } from 'evergreen-ui';
+import Header from '../../components/Header';
 /**
 * @author martincserep
-* @function Accomodations
+* @function EditPage
 * */
 
-class Accomodations extends Component {
+class Edit extends Component {
 
     constructor(props) {
         super(props)
         this.state = {
-            apiUrl: 'http://localhost:8080/gettrain/' + this.props.match.params.trainId,
+            apiUrl: 'https://kisvasutak-admin.herokuapp.com/' + this.props.match.params.edit + '/' + this.props.match.params.trainId,
             items: [],
             isLoaded: false,
         }
@@ -43,13 +46,13 @@ render() {
     if (!isLoaded) {
         return(
             <>
+                <TopHeader />
                 <div className={styles.middle}>
                     <RotateLoader
                         size={50}
                         margin={30}
                         />
                 </div>
-                <TopHeader />
 
             </>
         );
@@ -61,8 +64,17 @@ render() {
                 items = element;
             }
         });
+    
+        let stops = items.stations.forEach(item => {
+                return(
+                    <TableRow>
+                        <TableCell>{item.name}</TableCell>
+                        <TableCell>{item.location.lat}</TableCell>
+                        <TableCell>{item.location.lng}</TableCell>
+                    </TableRow>
+                )
+        })
 
-        console.log(items)        
         return(
             <>
                 <TopHeader />
@@ -87,10 +99,28 @@ render() {
                             <input placeholder="Additional" className={styles.input} value={items.additionalUrl} type="url" name="additional" />
                         <button className={styles.button} type="submit">Save</button>
                     </div>
+                    <Table>
+                        <TableHead>
+                            <TableHeaderCell>Name</TableHeaderCell>
+                            <TableHeaderCell>Lattitude</TableHeaderCell>
+                            <TableHeaderCell>Longitude</TableHeaderCell>
+                        </TableHead>
+                        <TableBody>
+                             {items.stations.map(item => {
+                                return(
+                                    <TableRow key={item.name}> 
+                                        <TableCell>{item.name}</TableCell>
+                                        <TableCell>{item.location.lat}</TableCell>
+                                        <TableCell>{item.location.lng}</TableCell>
+                                    </TableRow>
+                                )
+                            })}
+                        </TableBody>
+                    </Table>
                 </Container>
             </>
         );
     }
 }
 }
-export default Accomodations;
+export default Edit;

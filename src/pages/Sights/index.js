@@ -35,55 +35,57 @@ class Sights extends Component {
             });
     }
 
-render() {
-    
-    var rawData = this.state.items;
-    var isLoaded = this.state.isLoaded;
-    var items = [];
-        
-    if (!isLoaded) {
-        return(
-            <>
-                <div className={sytles.middle}>
-                    <RotateLoader
-                        size={50}
-                        margin={30}
-                        />
-                </div>
-                <TopHeader />
+    render() {
 
-            </>
-        );
-    } else {
-        rawData.forEach(element => {
-            if(element[0]){
-
-            } else {
-
-                Object.keys(element).map(item=> {
-                    items.push({"key": item, "value": element[item]});
-                })
-            }
-        });
-
-        
-        return(
-            <>
-                <TopHeader />
-                <Container>
-                    <div className={sytles.homeContainer}>
-                        {/* {Object.keys(items).forEach(item=> (
-                            <span>items[item].name</span>
-                            // <Card title={item.name} image={item.imgUrl} />
-                        ))} */}
-                        {items.map(item=> (
-                            <Card key={item.key} title={item.value.name} isTrain={false} image={item.value.imgUrl} />
-                        ))};
+        var rawData = this.state.items;
+        var isLoaded = this.state.isLoaded;
+        var items = [];
+        var trainId = '';
+            
+        if (!isLoaded) {
+            return(
+                <>
+                    <div className={sytles.middle}>
+                        <RotateLoader
+                            size={50}
+                            margin={30}
+                            />
                     </div>
-                </Container>
-            </>
-        );
-    }
-}
+                    <TopHeader />
+
+                </>
+            );
+        } else {
+            rawData.forEach(element => {
+                if(element[0]){
+
+                } else {
+
+                    Object.keys(element).map(item=> {
+                        items.push({"key": item, "value": element[item]});
+                    })
+                }
+            });
+
+            let sights = Object.keys(items).map(item => {
+                    let current = {"key": item, "value": items[item]}
+                    return <Card key={current.value.key} title={current.value.value.name} image={current.value.value.imgUrl} isTrain={false} editHref={'/edit/getsight/' + this.props.match.params.trainId + '/' + current.value.key.substr(1)} />
+                })
+
+            return(
+                <>
+                    <TopHeader />
+                    <Container>
+                        <div className={sytles.homeContainer}>
+                            {sights}
+                        </div>
+                    </Container>
+                </>
+            );
+        }
+
+            
+        }
+
 }
 export default Sights;

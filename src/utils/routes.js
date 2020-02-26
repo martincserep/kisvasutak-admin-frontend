@@ -8,7 +8,7 @@ import Login from "../pages/Login";
 import Auth from "../components/Auth";
 import Accomodations from "../pages/Accomodations";
 import Sights from "../pages/Sights";
-import TrainEdit from "../pages/TrainEdit";
+import Edit from "../pages/Edit"
 import AccAndSightEdit from "../pages/AccAndSightEdit";
 
 const Routes = () => (
@@ -17,7 +17,8 @@ const Routes = () => (
             <Route exact path="/" component={Auth(Home)} />
             <Route exact path="/accomodations/:trainId" component={Auth(Accomodations)} />
             <Route exact path="/sights/:trainId" component={Auth(Sights)} />
-            <Route exact path="/gettrain/:trainId" component={Auth(TrainEdit)} />
+            <Route exact path="/edit/:edit/:trainId" component={Auth(Edit)} />
+            <Route exact path="/edit/:edit/:trainId/:id" component={Auth(AccAndSightEdit)} />
             <Route exact path="/asedit" component={Auth(AccAndSightEdit)} />
             <Route exact path="/login" component={Login} />
         </Switch>
