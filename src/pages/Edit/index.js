@@ -11,6 +11,7 @@ import TableItem from '../../components/common/TableItem';
 import { Table, TableHead, TableBody, TableHeaderCell, TableRow, TableCell, Heading, Button } from 'evergreen-ui';
 import Header from '../../components/Header';
 import { FaEdit } from 'react-icons/fa';
+import {modifyTrain} from '../../functions/modify';
 /**
 * @author martincserep
 * @function EditPage
@@ -24,7 +25,11 @@ class Edit extends Component {
             apiUrl: 'https://kisvasutak-admin.herokuapp.com/' + this.props.match.params.edit + '/' + this.props.match.params.trainId,
             items: [],
             isLoaded: false,
+            modfied: {
+
+            },
         }
+        this.modify = this.modify.bind(this)
     }
 
     componentDidMount() {
@@ -34,8 +39,14 @@ class Edit extends Component {
                 this.setState({
                     items: json,
                     isLoaded: true,
+                    modfied: json,
                 })
             });
+    }
+
+    modify() {
+        // modifyTrain(this.props.match.params.trainId, this.state.items)
+        console.log(this.state.modified)
     }
 
 render() {
@@ -72,7 +83,12 @@ render() {
                     <div className={styles.formContainer}>
                         <span className={styles.title}>{items.name}</span>
                         <label className={styles.label}>Name</label>
-                            <input placeholder="Name" className={styles.input} value={items.name} type="text" name="name" />
+                            <input placeholder="Name" onChange={e=>this.setState({
+                                modified: {
+                                    ...this.state.modified,
+                                    [items.name]:e.target.value
+                                }
+                            })} className={styles.input} value={this.state.modified.name} type="text" name="name" />
                         <label className={styles.label}>Image</label>
                             <input placeholder="Image" className={styles.input} value={items.imgUrl} type="url" name="image" />
                         <label className={styles.label}>Pricing</label>
@@ -87,7 +103,7 @@ render() {
                             <input placeholder="Actual Events" className={styles.input} value={items.actualEventsUrl} type="url" name="actualEvents" />
                         <label className={styles.label}>Additional</label>
                             <input placeholder="Additional" className={styles.input} value={items.additionalUrl} type="url" name="additional" />
-                        <button className={styles.button} type="submit">Save</button>
+                        <button className={styles.button} onClick={()=>this.modify(items)} >Save</button>
                     </div>
                     <Heading size={900}>Stations</Heading>
                     <Table>
