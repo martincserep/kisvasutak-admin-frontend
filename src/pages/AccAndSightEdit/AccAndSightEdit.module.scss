@@ -1,43 +1,51 @@
-@import '../../styles/variables.scss';
-    .container {
-        margin: 25px;
-        .formContainer {
-            max-width: 500px;
-            border-radius: 10px;
-            background-color: $main-green;
-            text-align: center;
-            padding: 40px 0px 40px 0px;
-            backdrop-filter: blur(0.8);
-            .button {
-                padding: 10px;
-                border-radius: 20px;
-                margin: 10px;
-                font-size: 20px;
-                text-align: center;
-                width: 70%;
-            }
-            .input {
-                margin: 20px;
-                padding: 10px;
-                font-size: 20px;
-                width: 70%;
-                border-radius: 10px;
-            }
-            .textboxinput {
-                margin: 20px;
-                padding: 10px;
-                font-size: 20px;
-                width: 70%;
-                min-height: 100px;
-                border-radius: 10px;
-                resize: vertical;
-            }
-            .title {
-                color: $main-white;
-                margin: 20px;
-                padding: 20px;
-                font-size: 40px;
-            }
-            
-        }
-    }
+@import "../../styles/variables.scss";
+.formContainer {
+  margin: 25px auto;
+  max-width: 500px;
+  border-radius: 10px;
+  background-color: $main-green;
+  text-align: center;
+  padding: 40px 0px 40px 0px;
+  backdrop-filter: blur(0.8);
+  .button {
+    padding: 10px;
+    border-radius: 20px;
+    margin: 10px;
+    font-size: 20px;
+    text-align: center;
+    width: 70%;
+  }
+  .input {
+    margin: 20px;
+    padding: 10px;
+    font-size: 20px;
+    width: 70%;
+    border-radius: 10px;
+  }
+  .label {
+    color: $main-white;
+    display: block;
+    margin: 5px;
+    padding: 5px;
+    font-size: 20px;
+    width: 100%;
+    border-radius: 10px;
+  }
+  .textboxinput {
+    margin: 20px;
+    padding: 10px;
+    font-size: 20px;
+    width: 70%;
+    min-height: 100px;
+    border-radius: 10px;
+    resize: vertical;
+  }
+  .title {
+    display: flexbox;
+    color: $main-white;
+    width: 100%;
+    margin: 20px;
+    padding: 20px;
+    font-size: 40px;
+  }
+}

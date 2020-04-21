@@ -18,7 +18,7 @@ class Accomodations extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            apiUrl: 'https://kisvasutak-admin.herokuapp.com/accomodations/' + this.props.match.params.trainId,
+            apiUrl: 'https://kisvasutak-admin.herokuapp.com/allaccomodations/' + this.props.match.params.trainId,
             items: [],
             isLoaded: false,
         }
@@ -66,24 +66,24 @@ render() {
             }
         });
 
-        
+        let accomodations = Object.keys(items).map(item => {
+                let current = {"key": item, "value": items[item]}
+                return <Card key={current.value.key} title={current.value.value.name} image={current.value.value.imgUrl} isTrain={false} editHref={'/edit/getacc/' + this.props.match.params.trainId + '/' + current.value.key.substr(1)} />
+            })
+
         return(
             <>
                 <TopHeader />
                 <Container>
                     <div className={sytles.homeContainer}>
-                        {/* {Object.keys(items).forEach(item=> (
-                            <span>items[item].name</span>
-                            // <Card title={item.name} image={item.imgUrl} />
-                        ))} */}
-                        {items.map(item=> (
-                            <Card key={item.key} title={item.value.name} isTrain={false} image={item.value.imgUrl} />
-                        ))};
+                        {accomodations}
                     </div>
                 </Container>
             </>
         );
     }
-}
+
+        
+    }
 }
 export default Accomodations;
