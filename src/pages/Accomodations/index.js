@@ -18,7 +18,7 @@ class Accomodations extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            apiUrl: 'https://kisvasutak-admin.herokuapp.com/accomodations/' + this.props.match.params.trainId,
+            apiUrl: 'https://kisvasutak-admin.herokuapp.com/allaccomodations/' + this.props.match.params.trainId,
             items: [],
             isLoaded: false,
         }
@@ -40,7 +40,6 @@ render() {
     var rawData = this.state.items;
     var isLoaded = this.state.isLoaded;
     var items = [];
-    var trainId = '';
         
     if (!isLoaded) {
         return(
