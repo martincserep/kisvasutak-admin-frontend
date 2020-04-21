@@ -37,6 +37,8 @@ class Edit extends Component {
       newName: "",
       newLat: "",
       newLong: "",
+      indexOfStation: null,
+      editType: null
     };
     this.modify = this.modify.bind(this);
     this._handleFocus = this._handleFocus.bind(this);
@@ -47,7 +49,6 @@ class Edit extends Component {
     fetch(this.state.apiUrl)
       .then((res) => res.json())
       .then((json) => {
-        console.debug("json", json[1]);
         this.setState(
           {
             items: json[1],
@@ -62,12 +63,31 @@ class Edit extends Component {
       });
   }
 
+  getIndex(index,type) {
+    this.setState({indexOfStation: index})
+    this.setState({editType: type})
+  }
   _handleFocus(text) {
     console.log("Focused with text: " + text);
   }
 
   _handleFocusOut(text) {
-    console.log("Left editor with text: " + text);
+    let items = this.state.items;
+    let stations = this.state.items.stations;
+    console.log(stations)
+    let index = this.state.indexOfStation; 
+    if(this.state.editType==="name") {
+      stations[index].name = text
+    } else if(this.state.editType==="lat") {
+      stations[index].location.lat = text
+    } else {
+      stations[index].location.lng = text
+    }
+    items.stations = stations;
+    this.setState({items: items})
+    this.setState({indexOfStation: null})
+    this.setState({editType: null})
+    this.modify()
   }
 
   modify() {
@@ -120,7 +140,7 @@ class Edit extends Component {
                 <label className={styles.label}>Name</label>
                 <input
                   name="name"
-                  value={this.state.items.name}
+                  defaultValue={this.state.items.name}
                   placeholder="Name"
                   onChange={(e) =>
                     this.setState({
@@ -139,7 +159,7 @@ class Edit extends Component {
                 <input
                   placeholder="Image"
                   className={styles.input}
-                  value={this.state.items.imgUrl}
+                  defaultValue={this.state.items.imgUrl}
                   type="url"
                   name="image"
                 />
@@ -147,7 +167,7 @@ class Edit extends Component {
                 <input
                   placeholder="Pricing"
                   className={styles.input}
-                  value={this.state.items.pricingUrl}
+                  defaultValue={this.state.items.pricingUrl}
                   type="url"
                   name="pricing"
                 />
@@ -155,7 +175,7 @@ class Edit extends Component {
                 <input
                   placeholder="Schedule"
                   className={styles.input}
-                  value={this.state.items.scheduleUrl}
+                  defaultValue={this.state.items.scheduleUrl}
                   type="url"
                   name="schedule"
                 />
@@ -163,14 +183,14 @@ class Edit extends Component {
                 <textarea
                   placeholder="Description"
                   className={styles.textboxinput}
-                  value={this.state.items.description}
+                  defaultValue={this.state.items.description}
                   name="description"
                 />
                 <label className={styles.label}>Events</label>
                 <input
                   placeholder="Events"
                   className={styles.input}
-                  value={this.state.items.eventsUrl}
+                  defaultValue={this.state.items.eventsUrl}
                   type="url"
                   name="events"
                 />
@@ -178,7 +198,7 @@ class Edit extends Component {
                 <input
                   placeholder="Actual Events"
                   className={styles.input}
-                  value={this.state.items.actualEventsUrl}
+                  defaultValue={this.state.items.actualEventsUrl}
                   type="url"
                   name="actualEvents"
                 />
@@ -186,7 +206,7 @@ class Edit extends Component {
                 <input
                   placeholder="Additional"
                   className={styles.input}
-                  value={this.state.items.additionalUrl}
+                  defaultValue={this.state.items.additionalUrl}
                   type="url"
                   name="additional"
                 />
@@ -209,20 +229,19 @@ class Edit extends Component {
                   {this.state.items.stations.map((item) => {
                     return (
                       <TableRow key={item.name}>
-                        <TableCell>
+                        <TableCell onClick={()=> this.getIndex(this.state.items.stations.indexOf(item), "name")}>
                           <EditableLabel
                             text={item.name}
                             labelClassName="myLabelClass"
                             inputClassName="myInputClass"
                             inputWidth="200px"
                             inputHeight="25px"
-                            inputMaxLength="50"
                             inputFontWeight="bold"
                             onFocus={this._handleFocus}
                             onFocusOut={this._handleFocusOut}
                           />
                         </TableCell>
-                        <TableCell>
+                        <TableCell onClick={()=> this.getIndex(this.state.items.stations.indexOf(item), "lat")}>
                           <EditableLabel
                             text={item.location.lat}
                             labelClassName="myLabelClass"
@@ -235,7 +254,7 @@ class Edit extends Component {
                             onFocusOut={this._handleFocusOut}
                           />
                         </TableCell>
-                        <TableCell>
+                        <TableCell onClick={()=> this.getIndex(this.state.items.stations.indexOf(item), "lng")}>
                           <EditableLabel
                             text={item.location.lng}
                             labelClassName="myLabelClass"
