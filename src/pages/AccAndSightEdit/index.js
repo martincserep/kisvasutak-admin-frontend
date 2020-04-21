@@ -33,7 +33,6 @@ class AccAndSightEdit extends Component {
     fetch(this.state.apiUrl)
       .then((res) => res.json())
       .then((json) => {
-        console.debug("json", json[0]);
         this.setState(
           {
             items: json[0],
@@ -75,7 +74,7 @@ class AccAndSightEdit extends Component {
                 <label className={styles.label}>Name</label>
                 <input
                   name='name'
-                  value={this.state.items.name}
+                  defaultValue={this.state.items.name}
                   placeholder='Name'
                   onChange={(e) =>
                     this.setState({
@@ -93,7 +92,7 @@ class AccAndSightEdit extends Component {
                 <input
                   placeholder='Image'
                   className={styles.input}
-                  value={this.state.items.imgUrl}
+                  defaultValue={this.state.items.imgUrl}
                   type='url'
                   name='image'
                 />
@@ -101,14 +100,14 @@ class AccAndSightEdit extends Component {
                 <textarea
                   placeholder='Description'
                   className={styles.textboxinput}
-                  value={this.state.items.description}
+                  defaultValue={this.state.items.description}
                   name='description'
                 />
                 <label className={styles.label}>Additional</label>
                 <input
                   placeholder='Additional'
                   className={styles.input}
-                  value={this.state.items.additionalUrl}
+                  defaultValue={this.state.items.additionalUrl}
                   type='url'
                   name='additional'
                 />
