@@ -1,6 +1,8 @@
 # Kisvasutak
 This is the client side repository for _kisvasutak_ project. 
 [Open in your browser](https://kisvasutakadminfrontend.netlify.com/)
+Email: martincserep1@gmail.com
+Password: martin
 
 ## Components
 
