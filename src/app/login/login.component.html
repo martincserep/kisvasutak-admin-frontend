@@ -1,0 +1,60 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-7 form-bg">
+            <div class="row justify-content-center align-items-center">
+                <div class="col">
+                    
+                    <div class="row justify-content-center">
+                        <h1 class="display-3">Kisvasutak admin panel</h1>
+                    </div>
+                    <form #loginForm="ngForm" (ngSubmit)="login(loginForm)">
+                        
+                        <div class="row justify-content-center" *ngIf="authError">
+                            <div class="col-11 alert alert-danger">{{ authError?.message }}</div>
+                        </div>
+                        
+                        <div class="row justify-content-center">
+                            <div class="col-6">
+                                <label for="email">Email</label>
+                                <input ngModel #email="ngModel" name="email" type="email" class="form-control">
+                            </div>
+                        </div>
+                        
+                        <div class="row justify-content-center">
+                            <div class="col-6">
+                                <label for="password">Jelszó</label>
+                                <input ngModel #password="ngModel" name="password" type="password" class="form-control">
+                            </div>
+                        </div>
+                        <div class="row justify-content-center">
+                            <div class="col-6">
+                                <input ngModel #stayLoggedIn="ngModel" name="stayLoggedIn" type="checkbox" class="form-check-input" id="stayLoggedIn">
+                                <label class="form-check-label" for="stayLoggedIn">Maradjak bejelentkezve</label>
+                            </div> 
+                        </div>
+                        
+                        <div class="row justify-content-center mt-2">        
+                            <div class="col-6">
+                                <button class="btn btn-outline-light" type="submit">Bejelentkezés</button>
+                            </div>
+                        </div>
+                        
+                    </form>
+                </div>
+                <div class="col-md-1">
+                    <div class="full-height"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-5">
+            <div class="row justify-content-center align-items-end">
+                <div class="col-md-1">
+                    <div class="full-height"></div>
+                </div>
+                <div class="col-md-11">
+                    <img class="img-fluid" src="assets/login.svg">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

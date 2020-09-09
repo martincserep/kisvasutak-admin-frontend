@@ -1,0 +1,71 @@
+<div *ngIf="isLoading">
+    <app-loading></app-loading>
+</div>
+<div *ngIf="isLoaded" class="row justify-content-center" style="margin: auto;">
+    <div class="container">
+            <div class="row justify-content-center align-items-center" style="padding: 1rem 0;">
+                <div class="col-6">
+                    <img class="img-thumbnail" [src]="accommodation.imgUrl" [alt]="accommodation.name">
+                </div>
+                <div class="col-6">
+                   <h1 class="display-6">{{accommodation.name}}</h1>
+               </div>        
+           </div>
+           <div class="row justify-content-center" style="padding: 1rem 0;">
+               <div class="col-6">
+                <label class="text-primary" for="name">Szállás neve</label>
+                   <div class="input-group flex-nowrap">
+                       <div class="input-group-prepend">
+                         <span class="input-group-text" style="background-color: #148653; color: #fefefe;" id="addon-wrapping"></span>
+                       </div>
+                       <input [(ngModel)]="accommodation.name" type="text" class="form-control" placeholder="Név" aria-label="name" aria-describedby="addon-wrapping">
+                   </div>
+               </div>
+           </div>
+           <div class="row justify-content-center" style="padding: 1rem 0;">
+               <div class="col-6">
+                <label class="text-primary" for="image">Fénykép</label>
+                   <div class="input-group flex-nowrap">
+                       <div class="input-group-prepend">
+                         <span class="input-group-text" style="background-color: #148653; color: #fefefe;" id="addon-wrapping"></span>
+                       </div>
+                       <input [(ngModel)]="accommodation.imgUrl" type="text" class="form-control" placeholder="Fotó linkje" aria-label="image" aria-describedby="addon-wrapping">
+                   </div>
+               </div>
+           </div>
+           <div class="row justify-content-center" style="padding: 1rem 0;">
+               <div class="col-6">
+                <label class="text-primary" for="description">Leírás</label>
+                   <div class="input-group flex-nowrap">
+                       <div class="input-group-prepend">
+                         <span class="input-group-text" style="background-color: #148653; color: #fefefe;" id="addon-wrapping"></span>
+                       </div>
+                       <textarea [(ngModel)]="accommodation.description" type="text" style="resize:vertical; min-height: 200px;" class="form-control" placeholder="Leírás" aria-label="description" aria-describedby="addon-wrapping">
+                       </textarea>
+                   </div>
+               </div>
+           </div>
+           <div class="row justify-content-center" style="padding: 1rem 0;">
+            <div class="col-6">
+                <label class="text-primary" for="additional">További információk linkje</label>
+                <div class="input-group flex-nowrap">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text" style="background-color: #148653; color: #fefefe;" id="addon-wrapping"></span>
+                    </div>
+                    <input [(ngModel)]="accommodation.additionalUrl" type="text" class="form-control" placeholder="További információ linkje" aria-label="additional" aria-describedby="addon-wrapping">
+                </div>
+            </div>
+        </div>
+           <div class="row justify-content-center" style="padding: 1rem 0;">
+               <div class="col-1">
+                   <button (click)="sendAccommodation()" class="btn btn-primary">Mentés</button>
+               </div>
+           </div>
+    </div>
+</div>
+<div *ngIf="isWentWrong">
+    <app-went-wrong></app-went-wrong>
+</div>
+<ng-template #success>
+    <app-success></app-success>
+</ng-template>

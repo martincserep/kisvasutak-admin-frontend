@@ -1,0 +1,13 @@
+<div *ngIf="isLoading" style="margin: auto;">
+    <app-loading></app-loading>
+</div>
+<div *ngIf="!isLoading && !isEmpty" class="row justify-content-around" style="margin: auto;">
+        <app-train-item *ngFor="let trainElement of allTrain"
+                [train]="trainElement.train"
+                [trainId]="trainElement.id">
+        </app-train-item>  
+    </div>
+<app-empty *ngIf="isEmpty" tagName="vonatot"></app-empty>
+<div *ngIf="isWentWrong">
+    <app-went-wrong></app-went-wrong>
+</div>

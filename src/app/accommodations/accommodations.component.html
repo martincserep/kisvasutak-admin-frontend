@@ -1,0 +1,14 @@
+<div *ngIf="isLoading" style="margin: auto;">
+    <app-loading></app-loading>
+</div>
+<div *ngIf="!isLoading && !isEmpty" class="row justify-content-around" style="margin: auto;">
+    <app-accommodation-item *ngFor="let accommodationElement of allAccommodation"
+    [accommodation]="accommodationElement.accommodation"
+    [trainId]="accommodationElement.trainId"
+    [accommodationId]="accommodationElement.id">
+    </app-accommodation-item>
+</div>
+<app-empty *ngIf="isEmpty" tagName="szálláshelyet"></app-empty>
+<div *ngIf="isWentWrong">
+    <app-went-wrong></app-went-wrong>
+</div>
