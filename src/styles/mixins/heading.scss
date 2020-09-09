@@ -1,9 +1,0 @@
-@import '../variables';
-
-@mixin heading($font-size, $color: #fff) {
-    font-size: $font-size;
-    color: $color;
-    letter-spacing: 2px;
-    margin: 0;
-    font-family: 'Roboto';
-}
