@@ -1,25 +1,24 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing'
 
-import { WentWrongComponent } from './went-wrong.component';
+import { WentWrongComponent } from './went-wrong.component'
 
 describe('WentWrongComponent', () => {
-  let component: WentWrongComponent;
-  let fixture: ComponentFixture<WentWrongComponent>;
+	let component: WentWrongComponent
+	let fixture: ComponentFixture<WentWrongComponent>
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [ WentWrongComponent ]
-    })
-    .compileComponents();
-  });
+	beforeEach(async () => {
+		await TestBed.configureTestingModule({
+			declarations: [WentWrongComponent],
+		}).compileComponents()
+	})
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(WentWrongComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+	beforeEach(() => {
+		fixture = TestBed.createComponent(WentWrongComponent)
+		component = fixture.componentInstance
+		fixture.detectChanges()
+	})
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-});
+	it('should create', () => {
+		expect(component).toBeTruthy()
+	})
+})

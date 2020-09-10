@@ -1,15 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core'
 
 @Component({
-  selector: 'app-went-wrong',
-  templateUrl: './went-wrong.component.html',
-  styleUrls: ['./went-wrong.component.scss']
+	selector: 'app-went-wrong',
+	templateUrl: './went-wrong.component.html',
+	styleUrls: ['./went-wrong.component.scss'],
 })
 export class WentWrongComponent implements OnInit {
+	constructor() {}
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+	ngOnInit(): void {}
 }

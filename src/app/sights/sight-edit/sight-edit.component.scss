@@ -1,14 +1,20 @@
-.success-modal{
-    animation-name: example;
-    animation-duration: 0.3s;
-    background-color: rgba($color: #fefefe, $alpha: 0.8);
-  }
-.success-modal-backdrop {
-    background-color: rgba($color: #fefefe, $alpha: 200);
+.success-modal {
+	animation-name: example;
+	animation-duration: 0.3s;
+	background-color: rgba($color: #fefefe, $alpha: 0.8);
 }
-  
-  @keyframes example {
-    0%   {transform: scale(0)}
-    75%  {transform: scale(1.5)}
-    100% {transform: scale(1)}
-  }
+.success-modal-backdrop {
+	background-color: rgba($color: #fefefe, $alpha: 200);
+}
+
+@keyframes example {
+	0% {
+		transform: scale(0);
+	}
+	75% {
+		transform: scale(1.5);
+	}
+	100% {
+		transform: scale(1);
+	}
+}
