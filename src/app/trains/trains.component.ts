@@ -51,7 +51,6 @@ export class TrainsComponent implements OnInit {
 				})
 			})
 			.then(() => {
-				console.log(this.allTrain)
 				if (this.allTrain.length > 0) {
 					this.isEmpty = false
 				} else {

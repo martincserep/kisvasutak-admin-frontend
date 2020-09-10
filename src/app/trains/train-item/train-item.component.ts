@@ -9,9 +9,7 @@ import { Train } from '../train.model'
 export class TrainItemComponent implements OnInit {
 	@Input() train: Train
 	@Input() trainId: string
-	constructor() {
-		console.log(this.trainId)
-	}
+	constructor() {	}
 
 	ngOnInit(): void {}
 }

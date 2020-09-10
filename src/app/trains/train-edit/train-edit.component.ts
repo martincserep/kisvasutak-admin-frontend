@@ -108,7 +108,6 @@ export class TrainEditComponent implements OnInit {
 					new Location(this.newStationLat, this.newStationLng),
 				),
 			)
-			console.log(this.newStationLat, this.newStationLng)
 			this.newStationName = ''
 			this.newStationLat = null
 			this.newStationLng = null

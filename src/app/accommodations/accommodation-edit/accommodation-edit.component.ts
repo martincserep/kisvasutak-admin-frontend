@@ -41,7 +41,6 @@ export class AccommodationEditComponent implements OnInit {
 		)
 			.then((res) => res.json())
 			.then((json) => {
-				console.log(json)
 				this.accommodation = new Accommodation(
 					json[0].name,
 					json[0].imgUrl,
