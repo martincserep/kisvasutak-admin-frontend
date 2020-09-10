@@ -1,7 +1,7 @@
 # Admin page for ***Kisvasutak*** app
 > [![forthebadge](https://forthebadge.com/images/badges/built-with-love.svg)](https://forthebadge.com) ![Netlify](https://img.shields.io/netlify/f6caf78f-8651-4604-b915-a0d23ab54295?style=for-the-badge)
 ## Credentials for test usage
-You can check the website by clicking <a href="https://kisvasutakadminfrontend.netlify.app/login" target="_blank">here</a>
+You can check the website by clicking <a href="https://kisvasutakadminfrontend.netlify.app" target="_blank">here</a>
 > Email: martincserep1@gmail.com Password: martin
 
 ## Some feature form the app
