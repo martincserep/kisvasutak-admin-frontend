@@ -1,21 +1,23 @@
 <div class="col">
-    <div class="card" style="width: 18rem; height: 22rem; margin-top: 2rem;">
-        <img [src]="accommodation.imgUrl" class="img-fluid card-img-top" style="height: 60%;" [alt]="accommodation.name">
-        <div class="card-body">
-            <h5 class="card-title" style="height: 50%;">{{accommodation.name}}</h5>
-            <div class="row justify-content-center">
-
-                <div class="col-4">
-                    <a [routerLink]="['../',trainId,accommodationId,'edit']" class="btn btn-outline-primary">
-                        <i-bs
-                            name="pencil-square"
-                            width="1.5rem"
-                            height="1.5rem">
-                        </i-bs>
-                    </a>
-                </div>
-                
-            </div>
-        </div>
-    </div>
+	<div class="card" style="width: 18rem; height: 22rem; margin-top: 2rem">
+		<img
+			[src]="accommodation.imgUrl"
+			class="img-fluid card-img-top"
+			style="height: 60%"
+			[alt]="accommodation.name"
+		/>
+		<div class="card-body">
+			<h5 class="card-title" style="height: 50%">{{ accommodation.name }}</h5>
+			<div class="row justify-content-center">
+				<div class="col-4">
+					<a
+						[routerLink]="['../', trainId, accommodationId, 'edit']"
+						class="btn btn-outline-primary"
+					>
+						<i-bs name="pencil-square" width="1.5rem" height="1.5rem"> </i-bs>
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
