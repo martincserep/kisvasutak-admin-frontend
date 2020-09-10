@@ -1,11 +1,22 @@
 <nav class="navbar navbar-dark bg-dark">
-    <a class="navbar-brand" [routerLink]="['/']">Kisvasutak Admin</a>
-    <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-            <a class="nav-link" [routerLink]="['/trains']" routerLinkActive="router-link-active" >Vonatok <span class="sr-only">(current)</span></a>
-        </li>
-    </ul>
-    <div class="form-inline my-2 my-lg-0">
-        <button (click)="logout()" class="btn btn-outline-light my-2 my-sm-0" type="submit">Kijelentkezés</button>
-    </div>
+	<a class="navbar-brand" [routerLink]="['/']">Kisvasutak Admin</a>
+	<ul class="navbar-nav mr-auto">
+		<li class="nav-item active">
+			<a
+				class="nav-link"
+				[routerLink]="['/trains']"
+				routerLinkActive="router-link-active"
+				>Vonatok <span class="sr-only">(current)</span></a
+			>
+		</li>
+	</ul>
+	<div class="form-inline my-2 my-lg-0">
+		<button
+			(click)="logout()"
+			class="btn btn-outline-light my-2 my-sm-0"
+			type="submit"
+		>
+			Kijelentkezés
+		</button>
+	</div>
 </nav>

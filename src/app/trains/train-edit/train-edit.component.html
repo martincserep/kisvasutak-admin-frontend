@@ -1,163 +1,302 @@
 <div *ngIf="isLoading">
-    <app-loading></app-loading>
+	<app-loading></app-loading>
 </div>
-<div *ngIf="isLoaded" class="row justify-content-center" style="margin: auto;">
-    <div class="container">
-            <div class="row justify-content-center align-items-center" style="padding: 1rem 0;">
-                <div class="col-6">
-                    <img class="img-thumbnail" [src]="train.imgUrl" [alt]="train.name">
-                </div>
-                <div class="col-6">
-                   <h1 class="display-6">{{train.name}}</h1>
-               </div>        
-           </div>
-           <div class="row justify-content-center" style="padding: 1rem 0;">
-               <div class="col-6">
-                <label for="name" class="text-primary">Kisvasút neve</label>
-                   <div class="input-group flex-nowrap">
-                       <div class="input-group-prepend">
-                         <span class="input-group-text" style="background-color: #148653; color: #fefefe;" id="addon-wrapping"></span>
-                       </div>
-                       <input [(ngModel)]="train.name" id="name" type="text" class="form-control" aria-label="Név" aria-describedby="addon-wrapping">
-                   </div>
-               </div>
-           </div>
-           <div class="row justify-content-center" style="padding: 1rem 0;">
-               <div class="col-6">
-                <label for="imgUrl" class="text-primary">Fénykép</label>
-                   <div class="input-group flex-nowrap">
-                       <div class="input-group-prepend">
-                         <span class="input-group-text" style="background-color: #148653; color: #fefefe;" id="addon-wrapping"></span>
-                       </div>
-                       <input [(ngModel)]="train.imgUrl" id="imgUrl" type="text" class="form-control" aria-label="Fénykép" aria-describedby="addon-wrapping">
-                   </div>
-               </div>
-           </div>
-           <div class="row justify-content-center" style="padding: 1rem 0;">
-               <div class="col-6">
-                <label for="scheduleUrl" class="text-primary">Árlista</label>
-                   <div class="input-group flex-nowrap">
-                       <div class="input-group-prepend">
-                         <span class="input-group-text" style="background-color: #148653; color: #fefefe;" id="addon-wrapping"></span>
-                       </div>
-                       <input [(ngModel)]="train.pricingUrl" id="scheduleUrl" type="text" class="form-control" aria-label="Árlista" aria-describedby="addon-wrapping">
-                   </div>
-               </div>
-           </div>
-           <div class="row justify-content-center" style="padding: 1rem 0;">
-               <div class="col-6">
-                <label for="scheduleUrl" class="text-primary">Menetrend</label>
-                   <div class="input-group flex-nowrap">
-                       <div class="input-group-prepend">
-                         <span class="input-group-text" style="background-color: #148653; color: #fefefe;" id="addon-wrapping"></span>
-                       </div>
-                       <input [(ngModel)]="train.scheduleUrl" id="scheduleUrl" type="text" class="form-control" aria-label="Menetrend" aria-describedby="addon-wrapping">
-                   </div>
-               </div>
-           </div>
-           <div class="row justify-content-center" style="padding: 1rem 0;">
-               <div class="col-6">
-                <label for="description" class="text-primary">Leírás</label>
-                   <div class="input-group flex-nowrap">
-                       <div class="input-group-prepend">
-                         <span class="input-group-text" style="background-color: #148653; color: #fefefe;" id="addon-wrapping"></span>
-                       </div>
-                       <textarea [(ngModel)]="train.description" id="description" type="text" style="resize:vertical; min-height: 200px;" class="form-control" aria-label="Leírás" aria-describedby="addon-wrapping">
-                       </textarea>
-                   </div>
-               </div>
-           </div>
-           <div class="row justify-content-center" style="padding: 1rem 0;">
-               <div class="col-6">
-                <label for="eventsUrl" class="text-primary">Események linkje</label>
-                   <div class="input-group flex-nowrap">
-                       <div class="input-group-prepend">
-                         <span class="input-group-text" style="background-color: #148653; color: #fefefe;" id="addon-wrapping"></span>
-                       </div>
-                       <input [(ngModel)]="train.eventsUrl" id="eventsUrl" type="text" class="form-control" aria-label="Események linkje" aria-describedby="addon-wrapping">
-                   </div>
-               </div>
-           </div>
-           <div class="row justify-content-center" style="padding: 1rem 0;">
-               <div class="col-6">
-                <label for="actualEventsUrl" class="text-primary">Aktuális események linkje</label>
-                   <div class="input-group flex-nowrap">
-                       <div class="input-group-prepend">
-                         <span class="input-group-text" style="background-color: #148653; color: #fefefe;" id="addon-wrapping"></span>
-                       </div>
-                       <input [(ngModel)]="train.actualEventsUrl" id="actualEventsUrl" type="text" class="form-control" aria-label="Aktuális események linkje" aria-describedby="addon-wrapping">
-                   </div>
-               </div>
-           </div>
-           <div class="row justify-content-center" style="padding: 1rem 0;">
-            <div class="col-6">
-                <label for="additionalUrl" class="text-primary">További információ linkje</label>
-                <div class="input-group flex-nowrap">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text" style="background-color: #148653; color: #fefefe;" id="addon-wrapping"></span>
-                    </div>
-                    <input [(ngModel)]="train.additionalUrl" id="additionalUrl" type="text" class="form-control" aria-label="További információ linkje" aria-describedby="addon-wrapping">
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div *ngIf="stationError.hasError" class="col-12 alert alert-danger" role="alert">
-                {{stationError.message}}
-            </div>
-            <h2>Állomások</h2>
-            <table class="table">
-                <thead>
-                  <tr>
-                    <th scope="col">Név</th>
-                    <th scope="col">Lattitude</th>
-                    <th scope="col">Longitude</th>
-                    <th scope="col"></th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr *ngFor="let station of train.stations">
-                    <th scope="row"><app-inline-edit  [(ngModel)]="station.name" type="text"></app-inline-edit></th>
-                    <td><app-inline-edit  [(ngModel)]="station.location.lat" type="number"></app-inline-edit></td>
-                    <td><app-inline-edit  [(ngModel)]="station.location.lng" type="number"></app-inline-edit></td>
-                    <td><a (click)="removeFromStations(station.name)" style="cursor: pointer;">
-                            <i-bs
-                                name="trash"
-                                class="text-primary"
-                                width="2rem"
-                                height="2rem">
-                            </i-bs>
-                        </a>
-                    </td>
-                  </tr>
+<div *ngIf="isLoaded" class="row justify-content-center" style="margin: auto">
+	<div class="container">
+		<div
+			class="row justify-content-center align-items-center"
+			style="padding: 1rem 0"
+		>
+			<div class="col-6">
+				<img class="img-thumbnail" [src]="train.imgUrl" [alt]="train.name" />
+			</div>
+			<div class="col-6">
+				<h1 class="display-6">{{ train.name }}</h1>
+			</div>
+		</div>
+		<div class="row justify-content-center" style="padding: 1rem 0">
+			<div class="col-6">
+				<label for="name" class="text-primary">Kisvasút neve</label>
+				<div class="input-group flex-nowrap">
+					<div class="input-group-prepend">
+						<span
+							class="input-group-text"
+							style="background-color: #148653; color: #fefefe"
+							id="addon-wrapping"
+						></span>
+					</div>
+					<input
+						[(ngModel)]="train.name"
+						id="name"
+						type="text"
+						class="form-control"
+						aria-label="Név"
+						aria-describedby="addon-wrapping"
+					/>
+				</div>
+			</div>
+		</div>
+		<div class="row justify-content-center" style="padding: 1rem 0">
+			<div class="col-6">
+				<label for="imgUrl" class="text-primary">Fénykép</label>
+				<div class="input-group flex-nowrap">
+					<div class="input-group-prepend">
+						<span
+							class="input-group-text"
+							style="background-color: #148653; color: #fefefe"
+							id="addon-wrapping"
+						></span>
+					</div>
+					<input
+						[(ngModel)]="train.imgUrl"
+						id="imgUrl"
+						type="text"
+						class="form-control"
+						aria-label="Fénykép"
+						aria-describedby="addon-wrapping"
+					/>
+				</div>
+			</div>
+		</div>
+		<div class="row justify-content-center" style="padding: 1rem 0">
+			<div class="col-6">
+				<label for="scheduleUrl" class="text-primary">Árlista</label>
+				<div class="input-group flex-nowrap">
+					<div class="input-group-prepend">
+						<span
+							class="input-group-text"
+							style="background-color: #148653; color: #fefefe"
+							id="addon-wrapping"
+						></span>
+					</div>
+					<input
+						[(ngModel)]="train.pricingUrl"
+						id="scheduleUrl"
+						type="text"
+						class="form-control"
+						aria-label="Árlista"
+						aria-describedby="addon-wrapping"
+					/>
+				</div>
+			</div>
+		</div>
+		<div class="row justify-content-center" style="padding: 1rem 0">
+			<div class="col-6">
+				<label for="scheduleUrl" class="text-primary">Menetrend</label>
+				<div class="input-group flex-nowrap">
+					<div class="input-group-prepend">
+						<span
+							class="input-group-text"
+							style="background-color: #148653; color: #fefefe"
+							id="addon-wrapping"
+						></span>
+					</div>
+					<input
+						[(ngModel)]="train.scheduleUrl"
+						id="scheduleUrl"
+						type="text"
+						class="form-control"
+						aria-label="Menetrend"
+						aria-describedby="addon-wrapping"
+					/>
+				</div>
+			</div>
+		</div>
+		<div class="row justify-content-center" style="padding: 1rem 0">
+			<div class="col-6">
+				<label for="description" class="text-primary">Leírás</label>
+				<div class="input-group flex-nowrap">
+					<div class="input-group-prepend">
+						<span
+							class="input-group-text"
+							style="background-color: #148653; color: #fefefe"
+							id="addon-wrapping"
+						></span>
+					</div>
+					<textarea
+						[(ngModel)]="train.description"
+						id="description"
+						type="text"
+						style="resize: vertical; min-height: 200px"
+						class="form-control"
+						aria-label="Leírás"
+						aria-describedby="addon-wrapping"
+					>
+					</textarea>
+				</div>
+			</div>
+		</div>
+		<div class="row justify-content-center" style="padding: 1rem 0">
+			<div class="col-6">
+				<label for="eventsUrl" class="text-primary">Események linkje</label>
+				<div class="input-group flex-nowrap">
+					<div class="input-group-prepend">
+						<span
+							class="input-group-text"
+							style="background-color: #148653; color: #fefefe"
+							id="addon-wrapping"
+						></span>
+					</div>
+					<input
+						[(ngModel)]="train.eventsUrl"
+						id="eventsUrl"
+						type="text"
+						class="form-control"
+						aria-label="Események linkje"
+						aria-describedby="addon-wrapping"
+					/>
+				</div>
+			</div>
+		</div>
+		<div class="row justify-content-center" style="padding: 1rem 0">
+			<div class="col-6">
+				<label for="actualEventsUrl" class="text-primary"
+					>Aktuális események linkje</label
+				>
+				<div class="input-group flex-nowrap">
+					<div class="input-group-prepend">
+						<span
+							class="input-group-text"
+							style="background-color: #148653; color: #fefefe"
+							id="addon-wrapping"
+						></span>
+					</div>
+					<input
+						[(ngModel)]="train.actualEventsUrl"
+						id="actualEventsUrl"
+						type="text"
+						class="form-control"
+						aria-label="Aktuális események linkje"
+						aria-describedby="addon-wrapping"
+					/>
+				</div>
+			</div>
+		</div>
+		<div class="row justify-content-center" style="padding: 1rem 0">
+			<div class="col-6">
+				<label for="additionalUrl" class="text-primary"
+					>További információ linkje</label
+				>
+				<div class="input-group flex-nowrap">
+					<div class="input-group-prepend">
+						<span
+							class="input-group-text"
+							style="background-color: #148653; color: #fefefe"
+							id="addon-wrapping"
+						></span>
+					</div>
+					<input
+						[(ngModel)]="train.additionalUrl"
+						id="additionalUrl"
+						type="text"
+						class="form-control"
+						aria-label="További információ linkje"
+						aria-describedby="addon-wrapping"
+					/>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div
+				*ngIf="stationError.hasError"
+				class="col-12 alert alert-danger"
+				role="alert"
+			>
+				{{ stationError.message }}
+			</div>
+			<h2>Állomások</h2>
+			<table class="table">
+				<thead>
+					<tr>
+						<th scope="col">Név</th>
+						<th scope="col">Lattitude</th>
+						<th scope="col">Longitude</th>
+						<th scope="col"></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr *ngFor="let station of train.stations">
+						<th scope="row">
+							<app-inline-edit
+								[(ngModel)]="station.name"
+								type="text"
+							></app-inline-edit>
+						</th>
+						<td>
+							<app-inline-edit
+								[(ngModel)]="station.location.lat"
+								type="number"
+							></app-inline-edit>
+						</td>
+						<td>
+							<app-inline-edit
+								[(ngModel)]="station.location.lng"
+								type="number"
+							></app-inline-edit>
+						</td>
+						<td>
+							<a
+								(click)="removeFromStations(station.name)"
+								style="cursor: pointer"
+							>
+								<i-bs
+									name="trash"
+									class="text-primary"
+									width="2rem"
+									height="2rem"
+								>
+								</i-bs>
+							</a>
+						</td>
+					</tr>
 
-                  
-                  <tr>
-                      <th scope="row"><input [(ngModel)]="newStationName" placeholder="Állomás neve" type="text"></th>
-                      <td><input [(ngModel)]="newStationLat" placeholder="Latitude" type="number"></td>
-                      <td><input [(ngModel)]="newStationLng" placeholder="Longitude" type="number"></td>
-                      <td><a (click)="addStation()" style="cursor: pointer;">
-                        <i-bs
-                        class="text-primary"
-                        name="plus"
-                        width="2rem"
-                        height="2rem">
-                    </i-bs>
-                </a>
-            </td>
-        </tr>
-    </tbody>
-</table>                                     
-        </div>
-        <div class="row justify-content-center" style="padding: 1rem 0;">
-            <div class="col-1">
-                <button (click)="sendTrain()" class="btn btn-primary">Mentés</button>
-            </div>
-        </div>
-    </div>
+					<tr>
+						<th scope="row">
+							<input
+								[(ngModel)]="newStationName"
+								placeholder="Állomás neve"
+								type="text"
+							/>
+						</th>
+						<td>
+							<input
+								[(ngModel)]="newStationLat"
+								placeholder="Latitude"
+								type="number"
+							/>
+						</td>
+						<td>
+							<input
+								[(ngModel)]="newStationLng"
+								placeholder="Longitude"
+								type="number"
+							/>
+						</td>
+						<td>
+							<a (click)="addStation()" style="cursor: pointer">
+								<i-bs
+									class="text-primary"
+									name="plus"
+									width="2rem"
+									height="2rem"
+								>
+								</i-bs>
+							</a>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="row justify-content-center" style="padding: 1rem 0">
+			<div class="col-1">
+				<button (click)="sendTrain()" class="btn btn-primary">Mentés</button>
+			</div>
+		</div>
+	</div>
 </div>
 <div *ngIf="isWentWrong">
-    <app-went-wrong></app-went-wrong>
+	<app-went-wrong></app-went-wrong>
 </div>
 <ng-template #success>
-    <app-success></app-success>
+	<app-success></app-success>
 </ng-template>
